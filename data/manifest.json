@@ -1,0 +1,537 @@
+{
+  "schema_version": 1,
+  "manual_review_included": false,
+  "runs": [
+    {
+      "id": "candidate_b",
+      "label": "Candidate B",
+      "revision": "candidate_B_psfd_head20_201_620_context"
+    }
+  ],
+  "papers": [
+    {
+      "pmcid": "PMC10004717",
+      "path": "data/papers/PMC10004717.json",
+      "sha256": "cf5aa44035254f369cfc64001e90d533dc041626aef906f22aa7a1a25a747ea1"
+    },
+    {
+      "pmcid": "PMC10004776",
+      "path": "data/papers/PMC10004776.json",
+      "sha256": "5eb7ef7359e04a1a56de68157f21a1228857e0c47fc949c26627fc287320629b"
+    },
+    {
+      "pmcid": "PMC10009949",
+      "path": "data/papers/PMC10009949.json",
+      "sha256": "7423ab18f089e946cf5e0882bd995a745b735fee8efc785271075c20961cb15b"
+    },
+    {
+      "pmcid": "PMC10010605",
+      "path": "data/papers/PMC10010605.json",
+      "sha256": "35fb588f1f1749cae2fdbe059ec2125f8e548b3a2331dd5d4db28c1f2745d825"
+    },
+    {
+      "pmcid": "PMC10012607",
+      "path": "data/papers/PMC10012607.json",
+      "sha256": "341c366e4b613879e2f8a1e0ed42429ffdcd38fb273448f0554983f7907ed8ed"
+    },
+    {
+      "pmcid": "PMC10014550",
+      "path": "data/papers/PMC10014550.json",
+      "sha256": "2a2f4c55597673f70410f1a1137461854392787ac0a9f4a5537bbb281afed393"
+    },
+    {
+      "pmcid": "PMC10014554",
+      "path": "data/papers/PMC10014554.json",
+      "sha256": "574ac8b06bde5f10eff1960dc25ee6652a4be0835af7d0b74f0918722a9cdcce"
+    },
+    {
+      "pmcid": "PMC10014838",
+      "path": "data/papers/PMC10014838.json",
+      "sha256": "244e6efa8858aae0601daa00295b69c0bc46eef6ee924a4f55f782bbf7fd45c0"
+    },
+    {
+      "pmcid": "PMC10015162",
+      "path": "data/papers/PMC10015162.json",
+      "sha256": "42cff74e7f051967bc231f7573b1e8b387bf6826e36fee5f33ee2628a171bc66"
+    },
+    {
+      "pmcid": "PMC10015339",
+      "path": "data/papers/PMC10015339.json",
+      "sha256": "df356464e0859d47febc2fe2c9d86c579ebdfa9929194cfd8f751d076fb7e863"
+    },
+    {
+      "pmcid": "PMC10015340",
+      "path": "data/papers/PMC10015340.json",
+      "sha256": "2869378f4bf25a843def848e07ea1e7085ab3066acc0ecc4d7080761f76a8cd6"
+    },
+    {
+      "pmcid": "PMC10015447",
+      "path": "data/papers/PMC10015447.json",
+      "sha256": "e99dfdc3965fbc2f6e3c1dceb74a85d8bc1c4d42477428885dcebb132bb44877"
+    },
+    {
+      "pmcid": "PMC10017854",
+      "path": "data/papers/PMC10017854.json",
+      "sha256": "1710d0ddca172baaa0cae1c4865932d1bca079eb398fd283bf7f3423855b21ff"
+    },
+    {
+      "pmcid": "PMC10018198",
+      "path": "data/papers/PMC10018198.json",
+      "sha256": "36de4c9069744a723ece72ec70e79c08dddcec7fbbd460b75f503bf8db984ec1"
+    },
+    {
+      "pmcid": "PMC10018785",
+      "path": "data/papers/PMC10018785.json",
+      "sha256": "8934c8cae8041b26ffce5e004d4772c9eb0f0a1ff9b9d1ed0ddb71c70124f82d"
+    },
+    {
+      "pmcid": "PMC10018853",
+      "path": "data/papers/PMC10018853.json",
+      "sha256": "cd01a0676146111df68f0f7dd10d32d150f6f295dcbd080bfdf0afba03401588"
+    },
+    {
+      "pmcid": "PMC10019340",
+      "path": "data/papers/PMC10019340.json",
+      "sha256": "5290d1616ee27aa973d4434bade1f107a19a61ad76c03d021b2370646af622e2"
+    },
+    {
+      "pmcid": "PMC10020590",
+      "path": "data/papers/PMC10020590.json",
+      "sha256": "8f9daa7d2f57ab4647fd61e59942dc80cc33d3f5974323e8fbb254989be78a49"
+    },
+    {
+      "pmcid": "PMC10022623",
+      "path": "data/papers/PMC10022623.json",
+      "sha256": "4c1de7e3da67e07ec348a0b5aa8216760ee0f0923ce8cc7f036edea9eb59a2f6"
+    },
+    {
+      "pmcid": "PMC10022637",
+      "path": "data/papers/PMC10022637.json",
+      "sha256": "055621f30f46001a1b9dbd8459e6144626176e0171bb2395d4b05a994ecb3804"
+    }
+  ],
+  "sources": [
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10004717",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10004717.json",
+      "sha256": "e96df06e3b565a4b48dcbb1eb012bc4922b1eb93877fa056a9e69503234b55e4",
+      "local_path": "data/incoming/candidate_b/620/PMC10004717.json",
+      "record_count": 66
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10004717",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10004717.json",
+      "sha256": "999a0d87bb89d869f209faa40329395a5d3396034bc0757c2f37a8f4e503c7e5",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10004717.json",
+      "record_count": 66,
+      "sentence_count": 95,
+      "passage_count": 18
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10004776",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10004776.json",
+      "sha256": "b16833a008561adfdb2d0e4eea8b60821e59f04e2c8b81500f6f6a8e7e2a7995",
+      "local_path": "data/incoming/candidate_b/620/PMC10004776.json",
+      "record_count": 103
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10004776",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10004776.json",
+      "sha256": "026226acb1b1a5db64018a497b9d2ba222f40ac00b845fef3233dbd74623c43e",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10004776.json",
+      "record_count": 103,
+      "sentence_count": 193,
+      "passage_count": 31
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10009949",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10009949.json",
+      "sha256": "98034548b9cd57af5367d330472df92931ffec2a117ebc83038b081b839c95ca",
+      "local_path": "data/incoming/candidate_b/620/PMC10009949.json",
+      "record_count": 184
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10009949",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10009949.json",
+      "sha256": "49bb78cfe5df47290b8fa698fcd8e010a9c83e8cf8b3369bf20e82a426a4c7fa",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10009949.json",
+      "record_count": 184,
+      "sentence_count": 209,
+      "passage_count": 29
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10010605",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10010605.json",
+      "sha256": "06424d36a4b254bf1489fe436e61fc5e933b957fa56ea8fe40713586c16996e4",
+      "local_path": "data/incoming/candidate_b/620/PMC10010605.json",
+      "record_count": 42
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10010605",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10010605.json",
+      "sha256": "d9aff6cf13602f1dea0a2fee0f9a5bfa78dfca0eb696ec6db00c5308be185e79",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10010605.json",
+      "record_count": 42,
+      "sentence_count": 75,
+      "passage_count": 10
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10012607",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10012607.json",
+      "sha256": "1d423db3341ed3e374f3eddf82bccff1d2500fe426631129be873f599c6803e2",
+      "local_path": "data/incoming/candidate_b/620/PMC10012607.json",
+      "record_count": 301
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10012607",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10012607.json",
+      "sha256": "953bbdb8a42792a265dbc174b76d3611791bf2325346404daa14cec9a773a888",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10012607.json",
+      "record_count": 301,
+      "sentence_count": 162,
+      "passage_count": 36
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10014550",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10014550.json",
+      "sha256": "08d907802ecaf51df0b9124b108a6b451058befd34f9a71ff8a52edbdcfce23c",
+      "local_path": "data/incoming/candidate_b/620/PMC10014550.json",
+      "record_count": 236
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10014550",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10014550.json",
+      "sha256": "a26c5dcd67da2661627a9a11304c582c9a3c1768c0cea9197a2f3429f7fbcae7",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10014550.json",
+      "record_count": 236,
+      "sentence_count": 137,
+      "passage_count": 29
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10014554",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10014554.json",
+      "sha256": "4215a45c80aae3f8c92d950fb927d1659b6245a1edc9197c9d8fc377b3ae5613",
+      "local_path": "data/incoming/candidate_b/620/PMC10014554.json",
+      "record_count": 115
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10014554",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10014554.json",
+      "sha256": "a9d09f69fd3ed2e6d37eb16c3e2b57a2d34e0300fcc5506ce49814592998af13",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10014554.json",
+      "record_count": 115,
+      "sentence_count": 121,
+      "passage_count": 20
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10014838",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10014838.json",
+      "sha256": "713ac7930669a9f3d5dad26a0e69d7aef447954e7be690a9ee2b2b8c01980d6a",
+      "local_path": "data/incoming/candidate_b/620/PMC10014838.json",
+      "record_count": 266
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10014838",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10014838.json",
+      "sha256": "b96f785cea242452ba71e94dd09a9940b8e3f1bb18990bf7e69471647fd69010",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10014838.json",
+      "record_count": 266,
+      "sentence_count": 200,
+      "passage_count": 39
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10015162",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10015162.json",
+      "sha256": "c515a9559384b4e4e598cb98a8841032980ab366ef7102b6cbef442b4a6c01e1",
+      "local_path": "data/incoming/candidate_b/620/PMC10015162.json",
+      "record_count": 246
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10015162",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10015162.json",
+      "sha256": "41e4f3dcfff47ddef9cff09439096b66125fc5d04844b745d98dceb91ecde719",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10015162.json",
+      "record_count": 246,
+      "sentence_count": 226,
+      "passage_count": 39
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10015339",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10015339.json",
+      "sha256": "f7d172e941d6fd1c10d984cb45f2c464cc6b6ba8b1ffc6192e00d5ac07f1916c",
+      "local_path": "data/incoming/candidate_b/620/PMC10015339.json",
+      "record_count": 177
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10015339",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10015339.json",
+      "sha256": "b5c344d596ad9c117c10dd19bf083be39f4aed3474167272afb97cc41c26ba3e",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10015339.json",
+      "record_count": 177,
+      "sentence_count": 243,
+      "passage_count": 37
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10015340",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10015340.json",
+      "sha256": "a21d5d0548fa6a40efd5bded16f8477c52731c59aa7f311e6255db673da1a2eb",
+      "local_path": "data/incoming/candidate_b/620/PMC10015340.json",
+      "record_count": 175
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10015340",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10015340.json",
+      "sha256": "4264a206d0494655bd07e3ab49fa0ffae2fea57ae009f6bc2d860bbb0fadcae3",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10015340.json",
+      "record_count": 175,
+      "sentence_count": 216,
+      "passage_count": 28
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10015447",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10015447.json",
+      "sha256": "88657886b5e71da8750053f3f4b8a92dc1f685307351dc091a7c2978d7d1f0ac",
+      "local_path": "data/incoming/candidate_b/620/PMC10015447.json",
+      "record_count": 167
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10015447",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10015447.json",
+      "sha256": "9ead6be8e0ee35185843a6d2457a98c44383f15bd525c4c2354e3abf62adce55",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10015447.json",
+      "record_count": 167,
+      "sentence_count": 227,
+      "passage_count": 21
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10017854",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10017854.json",
+      "sha256": "9cccd81aa981a9571cb5090edca2c5c2aa2a69c1ba4d8c0602a696b6d55bd5c5",
+      "local_path": "data/incoming/candidate_b/620/PMC10017854.json",
+      "record_count": 163
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10017854",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10017854.json",
+      "sha256": "e8bc08828fe578d94093071c70fc22fe94859cb634496fa2bed1a5dcde290463",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10017854.json",
+      "record_count": 163,
+      "sentence_count": 205,
+      "passage_count": 36
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10018198",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10018198.json",
+      "sha256": "76973a37a1e006fabcf87ba7fa07f851825045ebe077b92ee26c18d467fb7231",
+      "local_path": "data/incoming/candidate_b/620/PMC10018198.json",
+      "record_count": 279
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10018198",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10018198.json",
+      "sha256": "d3b92f84b7fbf5659a7005fffbc2baecab414c125a234eb84a7ce7ff427797a9",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10018198.json",
+      "record_count": 279,
+      "sentence_count": 226,
+      "passage_count": 37
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10018785",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10018785.json",
+      "sha256": "2ab82c5fb69749c3809fe5d6e6e0f9568b22a9f63cf5e4e4d06abdef79c6ce76",
+      "local_path": "data/incoming/candidate_b/620/PMC10018785.json",
+      "record_count": 124
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10018785",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10018785.json",
+      "sha256": "28c0b854a90c6d94d24f3512bb081d6e68bad402750ee24ca61f45a6ea031bdf",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10018785.json",
+      "record_count": 124,
+      "sentence_count": 249,
+      "passage_count": 39
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10018853",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10018853.json",
+      "sha256": "d7cf5b9deb46e51a6b659ea46fccf5126d5ba99ec418d34edc5dceccb0c80a66",
+      "local_path": "data/incoming/candidate_b/620/PMC10018853.json",
+      "record_count": 193
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10018853",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10018853.json",
+      "sha256": "c9dbb52b7f97010766047cf309bdfe17f65b0e8d8bdcee577e4b9a575b833850",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10018853.json",
+      "record_count": 193,
+      "sentence_count": 255,
+      "passage_count": 37
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10019340",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10019340.json",
+      "sha256": "7d9bef44bf67b71ad7a937cb10abb6aa97db8b8a5a0a18e5fa98caf4b6adfc90",
+      "local_path": "data/incoming/candidate_b/620/PMC10019340.json",
+      "record_count": 49
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10019340",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10019340.json",
+      "sha256": "700d5e9d2dd99f7d9345b59bde2cbca79902c3d84e036717cb02c175ae1e78af",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10019340.json",
+      "record_count": 49,
+      "sentence_count": 94,
+      "passage_count": 14
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10020590",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10020590.json",
+      "sha256": "0acda51444f2e31de416817c106fc81655da977a506cd5845639f62765b40ccb",
+      "local_path": "data/incoming/candidate_b/620/PMC10020590.json",
+      "record_count": 246
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10020590",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10020590.json",
+      "sha256": "16587aa2ea1b86f4569f08d0ef93a01a9366236a36076414dcdf52db6c41d66c",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10020590.json",
+      "record_count": 246,
+      "sentence_count": 188,
+      "passage_count": 40
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10022623",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10022623.json",
+      "sha256": "b06f9bdc817009cfb15b54d0ddfc148353a67eac9482cf851250f07d1406be50",
+      "local_path": "data/incoming/candidate_b/620/PMC10022623.json",
+      "record_count": 99
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10022623",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10022623.json",
+      "sha256": "5f1e9b164cad6117505839e4df92e30b77305e11d469d67ff229ffec3a3687d5",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10022623.json",
+      "record_count": 99,
+      "sentence_count": 217,
+      "passage_count": 38
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10022637",
+      "stage": "620",
+      "path": "/ocean/projects/bio250095p/thawkins/candidate_B_psfd_head20_201_620_context/manual_verification/recovery_job_47574759/output/620_merged_context_complete/PMC10022637.json",
+      "sha256": "41250236058d61e33b082d69b33753a3f81611e3d93d72775c84396b0532d726",
+      "local_path": "data/incoming/candidate_b/620/PMC10022637.json",
+      "record_count": 47
+    },
+    {
+      "run_id": "candidate_b",
+      "pmcid": "PMC10022637",
+      "stage": "evidence_export",
+      "path": "/ocean/projects/bio250095p/thawkins/outputviewer_evidence_export_2026-10-15/evidence/PMC10022637.json",
+      "sha256": "e96420afb970cda3f051c020dd8b0571793e5989d5c1cfd9dc49ec339eb63a38",
+      "local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/evidence/PMC10022637.json",
+      "record_count": 47,
+      "sentence_count": 104,
+      "passage_count": 10
+    }
+  ],
+  "evidence_export": {
+    "manifest_local_path": "data/incoming/outputviewer_evidence_export_2026-10-15/manifest.json",
+    "manifest_sha256": "cb8755d701250f5914438523416924dce0154cdc41fa70dd51bc079f2d86e1ce",
+    "archive_local_path": "data/incoming/outputviewer_evidence_export_2026-10-15.tar.gz",
+    "archive_sha256": "40684e3fc6b10219fe90d692221fedfbab2487f5e91c19b0e3156e0d17950803",
+    "counts": {
+      "step_620_records_total": 3278,
+      "step_620_records_distinct": 3278,
+      "relation_evidence_references_total": 3378,
+      "relation_evidence_references_distinct": 1486,
+      "resolved_relation_evidence_references_total": 3378,
+      "resolved_relation_evidence_references_distinct": 1486,
+      "context_passage_references_total": 3278,
+      "context_passage_references_distinct": 588,
+      "resolved_context_passage_references_total": 3278,
+      "resolved_context_passage_references_distinct": 588,
+      "exported_sentences": 3642,
+      "exported_passages": 588,
+      "explicit_automated_context_evidence_sentence_references": 0,
+      "missing_or_ambiguous_ids": 0
+    }
+  }
+}
