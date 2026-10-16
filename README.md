@@ -44,7 +44,8 @@ and their ordered source sentences are available in a collapsed evidence drawer.
 
 ## Manual confirmation
 
-Each relationship has separate Triple and Context controls. Mark **Reviewed**
-first, then mark **Correct** when applicable. A reviewed item with Correct left
-unchecked is exported as `incorrect`. Progress is saved only in that browser and
-device, so use **Download Review TSV** regularly and before changing browsers.
+Each relationship has separate Triple and Context controls. Choose **Valid** or
+**Invalid** for each dimension; the choices are mutually exclusive. Clearing
+both returns that dimension to `not_reviewed`. Progress is saved only in that
+browser and device, so use **Download Review TSV** regularly and before changing
+browsers.

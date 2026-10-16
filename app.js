@@ -212,7 +212,7 @@ function reviewStats(judgments) {
 
 function judgmentLabel(reviewed, correct) {
   if (!reviewed) return "not_reviewed";
-  return correct ? "correct" : "incorrect";
+  return correct ? "valid" : "invalid";
 }
 
 function tsvCell(value) {
@@ -761,48 +761,64 @@ if (typeof window !== "undefined") {
     tripleGroup.className = "review-group";
     const tripleTitle = document.createElement("strong");
     tripleTitle.textContent = "Triple";
-    const tripleReviewed = makeCheckbox("triple-reviewed", "Reviewed", saved.triple_reviewed);
-    const tripleCorrect = makeCheckbox("triple-correct", "Correct", saved.triple_correct);
+    const tripleValid = makeCheckbox(
+      "triple-valid", "Valid", saved.triple_reviewed && saved.triple_correct
+    );
+    const tripleInvalid = makeCheckbox(
+      "triple-invalid", "Invalid", saved.triple_reviewed && !saved.triple_correct
+    );
     tripleGroup.appendChild(tripleTitle);
-    tripleGroup.appendChild(tripleReviewed.label);
-    tripleGroup.appendChild(tripleCorrect.label);
+    tripleGroup.appendChild(tripleValid.label);
+    tripleGroup.appendChild(tripleInvalid.label);
 
     const contextGroup = document.createElement("div");
     contextGroup.className = "review-group";
     const contextTitle = document.createElement("strong");
     contextTitle.textContent = "Context";
-    const contextReviewed = makeCheckbox("context-reviewed", "Reviewed", saved.context_reviewed);
-    const contextCorrect = makeCheckbox("context-correct", "Correct", saved.context_correct);
+    const contextValid = makeCheckbox(
+      "context-valid", "Valid", saved.context_reviewed && saved.context_correct
+    );
+    const contextInvalid = makeCheckbox(
+      "context-invalid", "Invalid", saved.context_reviewed && !saved.context_correct
+    );
     contextGroup.appendChild(contextTitle);
-    contextGroup.appendChild(contextReviewed.label);
-    contextGroup.appendChild(contextCorrect.label);
+    contextGroup.appendChild(contextValid.label);
+    contextGroup.appendChild(contextInvalid.label);
 
-    const commitReview = () => {
-      if (tripleCorrect.input.checked) tripleReviewed.input.checked = true;
-      if (contextCorrect.input.checked) contextReviewed.input.checked = true;
-      if (!tripleReviewed.input.checked) tripleCorrect.input.checked = false;
-      if (!contextReviewed.input.checked) contextCorrect.input.checked = false;
+    const commitReview = (changed) => {
+      if (changed === tripleValid.input && tripleValid.input.checked) {
+        tripleInvalid.input.checked = false;
+      } else if (changed === tripleInvalid.input && tripleInvalid.input.checked) {
+        tripleValid.input.checked = false;
+      } else if (changed === contextValid.input && contextValid.input.checked) {
+        contextInvalid.input.checked = false;
+      } else if (changed === contextInvalid.input && contextInvalid.input.checked) {
+        contextValid.input.checked = false;
+      }
 
-      if (!tripleReviewed.input.checked && !contextReviewed.input.checked) {
+      const tripleReviewed = tripleValid.input.checked || tripleInvalid.input.checked;
+      const contextReviewed = contextValid.input.checked || contextInvalid.input.checked;
+
+      if (!tripleReviewed && !contextReviewed) {
         delete state.judgments[key];
       } else {
         state.judgments[key] = normalizeReviewEntry({
           paper_id: state.currentPmcid,
           triple_id: sourceTripleId(rec),
           source_record_id: sourceRecordId(rec),
-          triple_reviewed: tripleReviewed.input.checked,
-          triple_correct: tripleCorrect.input.checked,
-          context_reviewed: contextReviewed.input.checked,
-          context_correct: contextCorrect.input.checked,
+          triple_reviewed: tripleReviewed,
+          triple_correct: tripleValid.input.checked,
+          context_reviewed: contextReviewed,
+          context_correct: contextValid.input.checked,
           updated_at: new Date().toISOString(),
         });
       }
-      card.classList.toggle("reviewed", tripleReviewed.input.checked || contextReviewed.input.checked);
+      card.classList.toggle("reviewed", tripleReviewed || contextReviewed);
       saveReviews();
     };
 
-    [tripleReviewed.input, tripleCorrect.input, contextReviewed.input, contextCorrect.input]
-      .forEach((input) => input.addEventListener("change", commitReview));
+    [tripleValid.input, tripleInvalid.input, contextValid.input, contextInvalid.input]
+      .forEach((input) => input.addEventListener("change", () => commitReview(input)));
     card.classList.toggle("reviewed", saved.triple_reviewed || saved.context_reviewed);
     reviewPanel.appendChild(tripleGroup);
     reviewPanel.appendChild(contextGroup);
