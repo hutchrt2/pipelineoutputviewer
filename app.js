@@ -159,9 +159,99 @@ function formatContextValues(val) {
   return String(val);
 }
 
+const REVIEW_STORAGE_PREFIX = "funcmap-outputviewer-reviews-v1";
+
+function sourceRecordId(record) {
+  const orig = record.source_record || {};
+  return String(orig.record_id || record.record_id || "");
+}
+
+function sourceTripleId(record) {
+  const orig = record.source_record || {};
+  const relation = orig.relation || {};
+  return String(
+    orig.source_relation_id || relation.relation_id || orig.relation_id ||
+    orig.record_id || record.record_id || ""
+  );
+}
+
+function reviewKey(pmcid, record) {
+  return `${String(pmcid)}::${sourceRecordId(record)}`;
+}
+
+function reviewStorageKey(manifest) {
+  const run = ((manifest || {}).runs || [])[0] || {};
+  return `${REVIEW_STORAGE_PREFIX}:${run.id || "candidate_b"}:${run.revision || "unknown"}`;
+}
+
+function normalizeReviewEntry(value) {
+  const entry = value && typeof value === "object" ? value : {};
+  const tripleReviewed = entry.triple_reviewed === true;
+  const contextReviewed = entry.context_reviewed === true;
+  return {
+    paper_id: String(entry.paper_id || ""),
+    triple_id: String(entry.triple_id || ""),
+    source_record_id: String(entry.source_record_id || ""),
+    triple_reviewed: tripleReviewed,
+    triple_correct: tripleReviewed && entry.triple_correct === true,
+    context_reviewed: contextReviewed,
+    context_correct: contextReviewed && entry.context_correct === true,
+    updated_at: String(entry.updated_at || ""),
+  };
+}
+
+function reviewStats(judgments) {
+  const entries = Object.values(judgments || {}).map(normalizeReviewEntry);
+  return {
+    reviewedTriples: entries.filter((entry) => entry.triple_reviewed).length,
+    correctTriples: entries.filter((entry) => entry.triple_reviewed && entry.triple_correct).length,
+    reviewedContexts: entries.filter((entry) => entry.context_reviewed).length,
+    correctContexts: entries.filter((entry) => entry.context_reviewed && entry.context_correct).length,
+  };
+}
+
+function judgmentLabel(reviewed, correct) {
+  if (!reviewed) return "not_reviewed";
+  return correct ? "correct" : "incorrect";
+}
+
+function tsvCell(value) {
+  const text = String(value === null || value === undefined ? "" : value);
+  if (!/[\t\r\n"]/.test(text)) return text;
+  return `"${text.replace(/"/g, '""')}"`;
+}
+
+function reviewsToTsv(judgments) {
+  const columns = [
+    "paper_id", "triple_id", "source_record_id", "triple_judgment",
+    "context_judgment", "triple_reviewed", "context_reviewed", "updated_at",
+  ];
+  const entries = Object.values(judgments || {})
+    .map(normalizeReviewEntry)
+    .filter((entry) => entry.triple_reviewed || entry.context_reviewed)
+    .sort((a, b) =>
+      a.paper_id.localeCompare(b.paper_id) ||
+      a.triple_id.localeCompare(b.triple_id) ||
+      a.source_record_id.localeCompare(b.source_record_id)
+    );
+  const rows = entries.map((entry) => [
+    entry.paper_id,
+    entry.triple_id,
+    entry.source_record_id,
+    judgmentLabel(entry.triple_reviewed, entry.triple_correct),
+    judgmentLabel(entry.context_reviewed, entry.context_correct),
+    String(entry.triple_reviewed),
+    String(entry.context_reviewed),
+    entry.updated_at,
+  ].map(tsvCell).join("\t"));
+  return `${columns.join("\t")}\n${rows.length ? `${rows.join("\n")}\n` : ""}`;
+}
+
 // Browser DOM rendering implementation
 if (typeof window !== "undefined") {
   const state = createViewerState();
+  state.judgments = {};
+  state.reviewStorageKey = null;
 
   const el = {
     statPapersCount: document.getElementById("stat-papers-count"),
@@ -175,6 +265,12 @@ if (typeof window !== "undefined") {
     filterMergeDec: document.getElementById("filter-merge-decision"),
     btnResetFilters: document.getElementById("btn-reset-filters"),
     btnExportJson: document.getElementById("btn-export-json"),
+    btnExportReviews: document.getElementById("btn-export-reviews"),
+    statReviewedTriples: document.getElementById("stat-reviewed-triples"),
+    statCorrectTriples: document.getElementById("stat-correct-triples"),
+    statReviewedContexts: document.getElementById("stat-reviewed-contexts"),
+    statCorrectContexts: document.getElementById("stat-correct-contexts"),
+    reviewSaveStatus: document.getElementById("review-save-status"),
     currentPaperPmcid: document.getElementById("current-paper-pmcid"),
     displayedRecordsCount: document.getElementById("displayed-records-count"),
     paperTotalRecords: document.getElementById("paper-total-records"),
@@ -195,7 +291,9 @@ if (typeof window !== "undefined") {
     fetchJson("data/manifest.json")
       .then((manifest) => {
         state.manifest = manifest;
+        loadSavedReviews();
         renderHeaderStats(manifest);
+        renderReviewStats();
         renderPaperSidebar(manifest.papers);
         if (manifest.papers.length > 0) {
           selectAndRenderPaper(manifest.papers[0].pmcid);
@@ -257,6 +355,11 @@ if (typeof window !== "undefined") {
       URL.revokeObjectURL(url);
     });
 
+    el.btnExportReviews.addEventListener("click", () => {
+      const tsv = reviewsToTsv(state.judgments);
+      downloadBlob(tsv, "funcmap_manual_review.tsv", "text/tab-separated-values;charset=utf-8");
+    });
+
     el.btnPrevPage.addEventListener("click", () => {
       if (state.pagination.page > 1) {
         state.pagination.page -= 1;
@@ -270,6 +373,54 @@ if (typeof window !== "undefined") {
         renderCurrentRecords();
       }
     });
+  }
+
+  function downloadBlob(content, filename, mimeType) {
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function loadSavedReviews() {
+    state.reviewStorageKey = reviewStorageKey(state.manifest);
+    try {
+      const parsed = JSON.parse(window.localStorage.getItem(state.reviewStorageKey) || "{}");
+      const source = parsed && typeof parsed.judgments === "object" ? parsed.judgments : {};
+      state.judgments = Object.fromEntries(
+        Object.entries(source).map(([key, value]) => [key, normalizeReviewEntry(value)])
+      );
+      el.reviewSaveStatus.textContent = "Reviews are saved in this browser.";
+    } catch (error) {
+      state.judgments = {};
+      el.reviewSaveStatus.textContent = "Browser storage is unavailable; download the TSV before leaving.";
+    }
+  }
+
+  function saveReviews() {
+    try {
+      window.localStorage.setItem(state.reviewStorageKey, JSON.stringify({
+        schema_version: 1,
+        judgments: state.judgments,
+      }));
+      el.reviewSaveStatus.textContent = "Saved in this browser.";
+    } catch (error) {
+      el.reviewSaveStatus.textContent = "Could not save locally; download the TSV now.";
+    }
+    renderReviewStats();
+  }
+
+  function renderReviewStats() {
+    const stats = reviewStats(state.judgments);
+    el.statReviewedTriples.textContent = String(stats.reviewedTriples);
+    el.statCorrectTriples.textContent = String(stats.correctTriples);
+    el.statReviewedContexts.textContent = String(stats.reviewedContexts);
+    el.statCorrectContexts.textContent = String(stats.correctContexts);
   }
 
   function renderHeaderStats(manifest) {
@@ -582,6 +733,81 @@ if (typeof window !== "undefined") {
     header.appendChild(badgesDiv);
     card.appendChild(header);
 
+    // Manual review controls are local annotations. They never alter the
+    // pipeline output or its automated verdicts.
+    const key = reviewKey(state.currentPmcid, rec);
+    const saved = normalizeReviewEntry(state.judgments[key]);
+    const reviewPanel = document.createElement("fieldset");
+    reviewPanel.className = "manual-review-panel";
+    const reviewLegend = document.createElement("legend");
+    reviewLegend.textContent = "Manual confirmation";
+    reviewPanel.appendChild(reviewLegend);
+
+    const makeCheckbox = (name, labelText, checked) => {
+      const label = document.createElement("label");
+      label.className = "review-checkbox";
+      const input = document.createElement("input");
+      input.type = "checkbox";
+      input.name = `${name}-${rec.record_id}`;
+      input.checked = checked;
+      const textNode = document.createElement("span");
+      textNode.textContent = labelText;
+      label.appendChild(input);
+      label.appendChild(textNode);
+      return { label, input };
+    };
+
+    const tripleGroup = document.createElement("div");
+    tripleGroup.className = "review-group";
+    const tripleTitle = document.createElement("strong");
+    tripleTitle.textContent = "Triple";
+    const tripleReviewed = makeCheckbox("triple-reviewed", "Reviewed", saved.triple_reviewed);
+    const tripleCorrect = makeCheckbox("triple-correct", "Correct", saved.triple_correct);
+    tripleGroup.appendChild(tripleTitle);
+    tripleGroup.appendChild(tripleReviewed.label);
+    tripleGroup.appendChild(tripleCorrect.label);
+
+    const contextGroup = document.createElement("div");
+    contextGroup.className = "review-group";
+    const contextTitle = document.createElement("strong");
+    contextTitle.textContent = "Context";
+    const contextReviewed = makeCheckbox("context-reviewed", "Reviewed", saved.context_reviewed);
+    const contextCorrect = makeCheckbox("context-correct", "Correct", saved.context_correct);
+    contextGroup.appendChild(contextTitle);
+    contextGroup.appendChild(contextReviewed.label);
+    contextGroup.appendChild(contextCorrect.label);
+
+    const commitReview = () => {
+      if (tripleCorrect.input.checked) tripleReviewed.input.checked = true;
+      if (contextCorrect.input.checked) contextReviewed.input.checked = true;
+      if (!tripleReviewed.input.checked) tripleCorrect.input.checked = false;
+      if (!contextReviewed.input.checked) contextCorrect.input.checked = false;
+
+      if (!tripleReviewed.input.checked && !contextReviewed.input.checked) {
+        delete state.judgments[key];
+      } else {
+        state.judgments[key] = normalizeReviewEntry({
+          paper_id: state.currentPmcid,
+          triple_id: sourceTripleId(rec),
+          source_record_id: sourceRecordId(rec),
+          triple_reviewed: tripleReviewed.input.checked,
+          triple_correct: tripleCorrect.input.checked,
+          context_reviewed: contextReviewed.input.checked,
+          context_correct: contextCorrect.input.checked,
+          updated_at: new Date().toISOString(),
+        });
+      }
+      card.classList.toggle("reviewed", tripleReviewed.input.checked || contextReviewed.input.checked);
+      saveReviews();
+    };
+
+    [tripleReviewed.input, tripleCorrect.input, contextReviewed.input, contextCorrect.input]
+      .forEach((input) => input.addEventListener("change", commitReview));
+    card.classList.toggle("reviewed", saved.triple_reviewed || saved.context_reviewed);
+    reviewPanel.appendChild(tripleGroup);
+    reviewPanel.appendChild(contextGroup);
+    card.appendChild(reviewPanel);
+
     // Context Section on Card
     const ctxCard = document.createElement("div");
     ctxCard.className = "record-context-card";
@@ -820,5 +1046,13 @@ if (typeof module !== "undefined" && module.exports) {
     relationVerdictCategory,
     contextVerdictCategory,
     mergeDecisionCategory,
+    sourceRecordId,
+    sourceTripleId,
+    reviewKey,
+    reviewStorageKey,
+    normalizeReviewEntry,
+    reviewStats,
+    judgmentLabel,
+    reviewsToTsv,
   };
 }

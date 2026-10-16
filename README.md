@@ -30,7 +30,9 @@ Self-contained offline viewer for the pipeline run (20 papers through Step 620).
 - Context passage references resolved: 3278 / 3278
 - Distinct exported sentences: 3642
 - Distinct exported passages: 588
-- Manual reviews: EXCLUDED (automated evaluation verdicts only)
+- Bundled manual reviews: EXCLUDED (automated evaluation verdicts only)
+- New manual confirmations can be entered in the viewer. They are saved in the
+  current browser and can be downloaded as a TSV at any time.
 
 ## Interpretation and Evidence Limitation
 
@@ -39,3 +41,10 @@ accuracy judgments. Every Step 620 relation evidence reference and current
 context passage resolves to the frozen Candidate B BioC export packaged with the
 project. Relation sentences appear directly on each card. Full context passages
 and their ordered source sentences are available in a collapsed evidence drawer.
+
+## Manual confirmation
+
+Each relationship has separate Triple and Context controls. Mark **Reviewed**
+first, then mark **Correct** when applicable. A reviewed item with Correct left
+unchecked is exported as `incorrect`. Progress is saved only in that browser and
+device, so use **Download Review TSV** regularly and before changing browsers.
